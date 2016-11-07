@@ -6,8 +6,9 @@ const uint8_t DCMotor::FORWARD = 0;
 const uint8_t DCMotor::NOTMOVING = 1;
 const uint8_t DCMotor::BACKWARD = 2;
 
-void DCMotor::setPWM(int pwm) {
-    statePWM = pwm;
+void DCMotor::setPWM(const int _pwm) {
+    statePWM = _pwm;
+    int pwm = _pwm;
     stateDir = (pwm < 0) ? BACKWARD : ((pwm > 0) ? FORWARD : NOTMOVING);
 
     if (pwm < 0) {
@@ -51,7 +52,7 @@ uint8_t DCMotor::getDirection() const {
     return stateDir;
 }
 
-DCMotor::DCMotor(uint8_t _pwmPin, uint8_t _dirPin) {
+DCMotor::DCMotor(const uint8_t _pwmPin, const uint8_t _dirPin) {
   pwmPin = _pwmPin;
   dirPin = _dirPin;
   pinMode(pwmPin, OUTPUT);

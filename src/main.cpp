@@ -1,10 +1,11 @@
 #ifndef UNIT_TEST // disable program main loop while unit testing in progress
 
-#include "dcmotor.h"
+#include "dcmotors.h"
 #include <Arduino.h>
 
-DCMotor lMotor(6, 7); //PWM, DIR
-DCMotor rMotor(9, 8); //PWM, DIR
+uint8_t pwmPins[] = {6, 9};
+uint8_t dirPins[] = {7, 8};
+DCMotors motors(pwmPins, dirPins); //PWM, DIR
 
 void setup() {
   Serial.begin(9600);
@@ -12,10 +13,22 @@ void setup() {
 
 void loop() {
     Serial.println("Both motor stopped");
-    lMotor.stop();
-    rMotor.stop();
+    motors.stop();
     delay(1000);
 
+    Serial.println("Both motor fw");
+    motors.setPWM(1000);
+    delay(1000);
+    motors.stop();
+
+    Serial.println("Both motor bw");
+    motors.setPWM(-1000);
+    delay(1000);
+    motors.stop();
+}
+
+void dcmotor_test() {
+/*
     Serial.println("Left motor forward");
     lMotor.setPWM(1000);
     delay(1000);
@@ -49,6 +62,7 @@ void loop() {
     delay(1000);
     rMotor.stop();
     lMotor.stop();
+*/
 }
 
 #endif

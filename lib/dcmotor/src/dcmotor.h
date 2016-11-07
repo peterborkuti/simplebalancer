@@ -39,12 +39,13 @@ public:
 static const uint8_t FORWARD;
 static const uint8_t NOTMOVING;
 static const uint8_t BACKWARD;
-  DCMotor(uint8_t _pwmPin, uint8_t _dirPin);
+DCMotor() {};
+  DCMotor(const uint8_t _pwmPin, const uint8_t _dirPin);
   /**
    * Sets the pwm for the motor.
    * @param pwm positiv values for FORWARD, negative for BACKWARD
    */
-  void setPWM(int pwm);
+  void setPWM(const int _pwm);
   /**
    * gets the set pwm value. It can be negative when motor moves backward
    * @return negative or positive pwm value
