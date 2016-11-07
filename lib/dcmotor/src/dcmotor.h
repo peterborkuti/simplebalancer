@@ -8,7 +8,7 @@
 #ifndef DCMOTOR_H
 #define DCMOTOR_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 /**
  * DC Motor control class
@@ -29,6 +29,7 @@ private:
  * stores the actual state of the pwm pin
  */
   int statePWM;
+
   uint8_t rawPWM;
 /**
  * stores the actual state of the direction pin
@@ -38,10 +39,6 @@ public:
 static const uint8_t FORWARD;
 static const uint8_t NOTMOVING;
 static const uint8_t BACKWARD;
-//enum DIRECTION {FORWARD = 0, NOTMOVING = 1, BACKWARD = 2};
-/**
- *
- */
   DCMotor(uint8_t _pwmPin, uint8_t _dirPin);
   /**
    * Sets the pwm for the motor.

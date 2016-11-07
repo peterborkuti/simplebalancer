@@ -1,11 +1,14 @@
-#include "DCMotor.h"
+#include "dcmotor.h"
 
-#include "Arduino.h"
+#include <Arduino.h>
 
+const uint8_t DCMotor::FORWARD = 0;
+const uint8_t DCMotor::NOTMOVING = 1;
+const uint8_t DCMotor::BACKWARD = 2;
 
 void DCMotor::setPWM(int pwm) {
     statePWM = pwm;
-    stateDir = (pwm < 0) ? 0 : ((pwm > 0) ? 2 : 1);
+    stateDir = (pwm < 0) ? BACKWARD : ((pwm > 0) ? FORWARD : NOTMOVING);
 
     if (pwm < 0) {
         pwm = -pwm;
@@ -21,7 +24,7 @@ void DCMotor::setPWM(int pwm) {
       rawPWM = map(pwm, 0, 255, 128, 255);
     }
     else if (stateDir == BACKWARD) {
-      rawPWM = map(-pwm, 0, 255, 128, 0);
+      rawPWM = map(pwm, 0, 255, 128, 0);
       rawDir = HIGH;
     }
     else {
