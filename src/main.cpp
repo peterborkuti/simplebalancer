@@ -63,20 +63,8 @@ void loop() {
     Serial.println(echo2);
 
     myPID.Compute();
-    
-    motors.setPWM(Output);
-    //delay(1000);
-/*
-    Serial.println("Both motor fw");
-    motors.setPWM(1000);
-    delay(1000);
-    motors.stop();
 
-    Serial.println("Both motor bw");
-    motors.setPWM(-1000);
-    delay(1000);
-    motors.stop();
-    */
+    motors.setPWM(Output);
 }
 
 void dcmotor_test() {
