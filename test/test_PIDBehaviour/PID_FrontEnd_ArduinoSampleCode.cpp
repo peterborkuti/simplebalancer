@@ -5,6 +5,8 @@
  * License: Creative-Commons Attribution Share-Alike
  * April 2011
  ******************************************************************/
+#ifndef UNIT_TEST
+
 void SerialReceive();
 void SerialSend();
 
@@ -185,3 +187,5 @@ void SerialSend()
   if(myPID.GetDirection()==DIRECT) Serial.println("Direct");
   else Serial.println("Reverse");
 }
+
+#endif
